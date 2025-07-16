@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        function load_state() {
+            var city_country_id = document.getElementById('city_country_id');
+            var city_state_id = document.getElementById('city_state_id');
+
+            document.getElementById("city_state_id").innerHTML = " ";
+            var ajax = new XMLHttpRequest();
+            ajax.onreadystatechange = function () {
+                if (ajax.readyState === 4) {
+                    alert(ajax.responseText);
+                    var jsn = JSON.parse(ajax.responseText);
+
+                    for (var i = 0; i < jsn.length; i++) {
+                        var opt = document.createElement('option');
+                        opt.value = jsn[i].state_id;
+                        opt.text = jsn[i].state_name;
+                        city_state_id.options.add(opt);
+                    }
+                }
+            };
+            {#            ajax.open("get", "/category/subcategory/load_product_subcategory?product_category_id=" + product_category_id.value, true);#}
+            ajax.open("get", "/addState?city_country_id=" + city_country_id.value, true);
+            ajax.send();
+
+
+        }
+    </script>
+</head>
+<body>
+<form method="post" action="/addCity">
+    <label for="city_country_id">Select Country:</label>
+    <select id="city_country_id" name="city_country_id" onchange="load_state()">
+        <option>Select Country</option>
+        {% for i in country_name %}
+            <option value="{{ i['country_id'] }}">{{ i['country_name'] }}</option>
+        {% endfor %}
+    </select><br>
+    <label for="city_state_id">Select State:</label>
+    <select id="city_state_id" name="city_state_id">
+        <option value="none" selected disabled>Select State</option>
+    </select><br>
+    <label for="city_name">Select City:</label>
+    <select id="city_name" name="city_name">
+        <option>Ahemedabad</option>
+        <option>Palanpur</option>
+
+        <option>Andheri</option>
+        <option>Bandra</option>
+
+        <option>Gurugram</option>
+        <option>Agra</option>
+
+        <option>Finger Lakes</option>
+
+        <option>LA</option>
+
+        <option>Kitchner</option>
+
+        <option>Edmonton</option>
+    </select><br>
+
+    <input type="submit" value="submit">
+</form>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    <table border="1">
+        <tr>
+            <th>City_id</th>
+            <th>City_name</th>
+            <th>City_country_id</th>
+            <th>City_state_id</th>
+        </tr>
+        {% for i in city_vo_list %}
+            <tr>
+                <td>{{ i['city_id'] }}</td>
+                <td>{{ i['city_name'] }}</td>
+                <td>{{ i['city_country_id'] }}</td>
+                <td>{{ i['city_state_id'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</form>
+</body>
+</html>

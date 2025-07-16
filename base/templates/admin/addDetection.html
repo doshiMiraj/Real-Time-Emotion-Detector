@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Face Expression Detection</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Face Expression Detection</title>
+    <!--favicon-->
+    <link rel="icon" href="../../static/adminResources/image/favicon-32x32.png" type="image/png"/>
+    <!--plugins-->
+    <link href="../../static/adminResources/css/simplebar.css" rel="stylesheet"/>
+    <link href="../../static/adminResources/css/perfect-scrollbar.css" rel="stylesheet"/>
+    <link href="../../static/adminResources/css/metisMenu.min.css" rel="stylesheet"/>
+    <!-- loader-->
+    <link href="../../static/adminResources/css/pace.min.css" rel="stylesheet"/>
+    <script src="../../static/adminResources/js/pace.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../../static/adminResources/css/bootstrap.min.css"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Roboto&display=swap"/>
+    <!-- Icons CSS -->
+    <link rel="stylesheet" href="../../static/adminResources/css/icons.css"/>
+    <!-- App CSS -->
+    <link rel="stylesheet" href="../../static/adminResources/css/app.css"/>
+    <link rel="stylesheet" href="../../static/adminResources/css/dark-sidebar.css"/>
+    <link rel="stylesheet" href="../../static/adminResources/css/dark-theme.css"/>
+</head>
+
+<body>
+<!-- wrapper -->
+<div class="wrapper">
+
+    <!--sidebar-wrapper-->
+    {% include 'admin/menu.html' %}
+    <!--end sidebar-wrapper-->
+
+    <!--header-->
+    {% include 'admin/header.html' %}
+    <!--end header-->
+
+    <!--page-wrapper-->
+    <div class="page-wrapper">
+        <!--page-content-wrapper-->
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                <!--breadcrumb-->
+                <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                </div>
+                <!--end breadcrumb-->
+                <div class="row">
+                    <div class="col-xl-12 mx-auto">
+                        <h6 class="mb-0 text-uppercase">Add Detection Details</h6>
+                        <hr>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="p-4 border rounded">
+                                    <form class="row g-3 needs-validation" novalidate="" method="post"
+                                          action="/insertDetection">
+                                    {################# detection branch #################}
+                                        <div class="col-md-12">
+                                            <label for="detection_branch_id" class="form-label">
+                                                Select Branch
+                                            </label>
+                                            <select class="form-select mb-3" id="detection_branch_id" name="detection_branch_id" onchange="load_camera()">
+                                                <option>Select Branch</option>
+                                                {% for i in branch_name %}
+                                                    <option value="{{ i['branch_id'] }}">{{ i['branch_name'] }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    {################# detection camera #################}
+                                        <div class="col-md-12">
+                                            <label for="detection_camera_id" class="form-label">
+                                                Select Camera
+                                            </label>
+                                            <select class="form-select mb-3" id="detection_camera_id" name="detection_camera_id">
+                                                <option value="none" selected disabled>Select camera</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <button class="btn btn-primary" type="submit">Detect</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end row-->
+            </div>
+        </div>
+        <!--end page-content-wrapper-->
+    </div>
+    <!--end page-wrapper-->
+
+    <!--start overlay-->
+    <div class="overlay toggle-btn-mobile"></div>
+    <!--end overlay-->
+
+    <!--Start Back To Top Button-->
+    <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+    <!--End Back To Top Button-->
+
+    <!--footer -->
+    {% include 'admin/footer.html' %}
+    <!-- end footer -->
+
+</div>
+<!-- end wrapper -->
+
+<!-- JavaScript -->
+<!-- Bootstrap JS -->
+<script src="../../static/adminResources/js/bootstrap.bundle.min.js"></script>
+
+<!--plugins-->
+<script src="../../static/adminResources/js/jquery.min.js"></script>
+<script src="../../static/adminResources/js/simplebar.min.js"></script>
+<script src="../../static/adminResources/js/metisMenu.min.js"></script>
+<script src="../../static/adminResources/js/perfect-scrollbar.js"></script>
+<!-- App JS -->
+<script src="../../static/adminResources/js/app.js"></script>
+
+<script>
+    function load_camera() {
+        var detection_branch_id = document.getElementById('detection_branch_id');
+        var detection_Camera_id = document.getElementById('detection_camera_id');
+
+        document.getElementById("detection_camera_id").innerHTML = " ";
+        var ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState === 4) {
+
+                alert(ajax.responseText);
+                var jsn = JSON.parse(ajax.responseText);
+
+                for (var i = 0; i < jsn.length; i++) {
+                    var opt = document.createElement('option');
+                    opt.value = jsn[i].camera_id;
+
+                    opt.text = jsn[i].camera_name;
+                    detection_Camera_id.options.add(opt);
+                }
+            }
+        };
+
+        {#            ajax.open("get", "/category/subcategory/load_product_subcategory?product_category_id=" + product_category_id.value, true);#}
+        ajax.open("get", "/ajaxcamera?detection_branch_id=" + detection_branch_id.value, true);
+        ajax.send();
+
+
+    }
+</script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    <table border="1">
+        <tr>
+            <th>State_id</th>
+            <th>State_name</th>
+            <th>State_country_id</th>
+        </tr>
+        {% for i in state_vo_list %}
+            <tr>
+                <td>{{ i['state_id'] }}</td>
+                <td>{{ i['state_name'] }}</td>
+                <td>{{ i['state_country_id'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</form>
+</body>
+</html>

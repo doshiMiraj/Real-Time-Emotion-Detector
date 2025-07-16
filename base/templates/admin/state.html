@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="/addState">
+    <label>Country</label>
+
+    <select id="select_country" name="select_country" value="selected_country">
+        {% for i in country_name %}
+            <option value="{{ i['country_id'] }}">{{ i['country_name'] }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label>Country</label>
+    <select id="select_state" name="select_state" value="selected_state">
+        <option>Gujrat</option>
+        <option>Mumbai</option>
+        <option>Delhi</option>
+        <option>New York</option>
+        <option>California</option>
+        <option>Ontirio</option>
+        <option>Alberta</option>
+    </select>
+    <br>
+
+    <input type="submit" value="submit">
+</form>
+</body>
+</html>

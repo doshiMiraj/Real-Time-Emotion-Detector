@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Face Expression Detection</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--favicon-->
+    <link rel="icon" href="../../static/adminResources/image/favicon-32x32.png" type="image/png"/>
+    <!--plugins-->
+    <link href="../../static/adminResources/css/simplebar.css" rel="stylesheet"/>
+    <link href="../../static/adminResources/css/perfect-scrollbar.css" rel="stylesheet"/>
+    <link href="../../static/adminResources/css/metisMenu.min.css" rel="stylesheet"/>
+    <!-- loader-->
+    <link href="../../static/adminResources/css/pace.min.css" rel="stylesheet"/>
+    <script src="../../static/adminResources/js/pace.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../../static/adminResources/css/bootstrap.min.css"/>
+    <!-- Icons CSS -->
+    <link rel="stylesheet" href="../../static/adminResources/css/icons.css"/>
+    <!-- App CSS -->
+    <link rel="stylesheet" href="../../static/adminResources/css/app.css"/>
+    <link rel="stylesheet" href="../../static/adminResources/css/dark-sidebar.css"/>
+    <link rel="stylesheet" href="../../static/adminResources/css/dark-theme.css"/>
+</head>
+
+<body>
+<!-- wrapper -->
+<div class="wrapper">
+
+    <!--sidebar-wrapper-->
+    {% include 'admin/menu.html' %}
+    <!--end sidebar-wrapper-->
+
+    <!--header-->
+    {% include 'admin/header.html' %}
+    <!--end header-->
+
+    <!--page-wrapper-->
+    <div class="page-wrapper">
+        <!--page-content-wrapper-->
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-xl-12 mx-auto">
+                        <h6 class="mb-0 text-uppercase">Add Branch Details</h6>
+                        <hr>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="p-4 border rounded">
+                                    <form novalidate="" method="post"
+                                          action="/insertbranch">
+
+                                        <div class="row g-3 needs-validation">
+
+                                            {################# Branch Name #################}
+                                            <div class="col-md-12">
+                                                <div class="has-arrow">
+                                                    <label for="branch_name" class="form-label">
+                                                        Branch name
+                                                    </label>
+                                                    <input type="text" class="form-control" id="branch_name"
+                                                           name='branch_name'>
+                                                </div>
+                                            </div>
+
+                                            {################# Country #################}
+                                            <div class="col-md-4">
+                                                <label for="branch_country_id" class="form-label">
+                                                    Country
+                                                </label>
+                                                <select class="form-select mb-3" id="branch_country_id"
+                                                        name="branch_country_id" onchange="load_state()">
+                                                    <option value="none" selected disabled>Select Country</option>
+                                                    {% for i in country_name %}
+                                                        <option value="{{ i['country_id'] }}">{{ i['country_name'] }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+
+                                            {################# State #################}
+                                            <div class="col-md-4">
+                                                <label for="branch_state_id" class="form-label">
+                                                    State
+                                                </label>
+
+                                                <select class="form-select mb-3" id="branch_state_id"
+                                                        name="branch_state_id" onchange="load_city()">
+                                                    <option value="none" selected disabled>Select State</option>
+                                                </select>
+                                            </div>
+
+                                            {################# City #################}
+                                            <div class="col-md-4">
+                                                <label for="branch_city_id" class="form-label">City</label>
+                                                <select class="form-select mb-3" id="branch_city_id"
+                                                        name="branch_city_id" onselect="load_state()">
+                                                    <option value="none" selected disabled>
+                                                        Select City
+                                                    </option>
+                                                </select>
+                                            </div>
+
+
+                                            {################# Manager Name #################}
+                                            <div class="col-md-6">
+                                                <label for="branch_manager" class="form-label">Manager Name</label>
+                                                <input type="text" class="form-control" id="branch_manager"
+                                                       name="branch_manager">
+                                            </div>
+
+                                            {################# Branch Contact Number #################}
+                                            <div class="col-md-6">
+                                                <label for="branch_contact" class="form-label">
+                                                    Branch Contact Number
+                                                </label>
+                                                <input type="text" class="form-control" id="branch_contact"
+                                                       name="branch_contact">
+                                            </div>
+
+                                            {################# Timings Of The Branch #################}
+                                            <div class="col-md-6">
+                                                <label for="branch_timings" class="form-label">
+                                                    Timings Of The Branch
+                                                </label>
+                                                <input type="time" class="form-control" id="branch_timings"
+                                                       name="branch_timings">
+                                            </div>
+
+                                            {################# Branch Operational Days #################}
+                                            <div class="col-md-6">
+                                                <label for="branch_operation" class="form-label">
+                                                    Branch Operational Days
+                                                </label>
+                                                <input type="number" class="form-control" id="branch_operation"
+                                                       name="branch_operation">
+                                            </div>
+
+                                            <div class="col-12">
+                                                <button class="btn btn-primary" type="submit">
+                                                    ADD
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end row-->
+            </div>
+        </div>
+        <!--end page-content-wrapper-->
+    </div>
+    <!--end page-wrapper-->
+
+    <!--start overlay-->
+    <div class="overlay toggle-btn-mobile"></div>
+    <!--end overlay-->
+
+    <!--footer -->
+    {% include 'admin/footer.html' %}
+    <!-- end footer -->
+
+</div>
+<!-- end wrapper -->
+
+<!-- JavaScript -->
+<!-- Bootstrap JS -->
+<script src="../../static/adminResources/js/bootstrap.bundle.min.js"></script>
+
+<!--plugins-->
+<script src="../../static/adminResources/js/jquery.min.js"></script>
+<script src="../../static/adminResources/js/simplebar.min.js"></script>
+<script src="../../static/adminResources/js/metisMenu.min.js"></script>
+<script src="../../static/adminResources/js/perfect-scrollbar.js"></script>
+<!-- App JS -->
+<script src="../../static/adminResources/js/app.js"></script>
+
+<script>
+    /**
+     * It's used for load state's data
+     */
+    function load_state() {
+        var branch_country_id = document.getElementById('branch_country_id');
+        var branch_state_id = document.getElementById('branch_state_id');
+
+        branch_state_id.innerHTML = " ";
+        branch_state_id.innerHTML = '<option value="none" selected disabled>Select State</option>';
+
+        branch_city_id.innerHTML = " ";
+        branch_city_id.innerHTML = '<option value="none" selected disabled>Select City</option>';
+
+        var ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState === 4) {
+
+                var jsn = JSON.parse(ajax.responseText);
+
+                for (var i = 0; i < jsn.length; i++) {
+                    var opt = document.createElement('option');
+                    opt.value = jsn[i].state_id;
+
+                    opt.text = jsn[i].state_name;
+                    branch_state_id.options.add(opt);
+                }
+            }
+        };
+        ajax.open("get", "/addState?city_country_id=" + branch_country_id.value, true);
+        ajax.send();
+    }
+
+    /**
+     * It's used for load city's data
+     */
+    function load_city() {
+        var branch_state_id = document.getElementById('branch_state_id');
+        var branch_city_id = document.getElementById('branch_city_id');
+
+        branch_city_id.innerHTML = " ";
+        branch_city_id.innerHTML = '<option value="none" selected disabled>Select City</option>';
+
+        var ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState === 4) {
+
+                var jsn = JSON.parse(ajax.responseText);
+
+                for (var i = 0; i < jsn.length; i++) {
+                    var opt = document.createElement('option');
+                    opt.value = jsn[i].city_id;
+
+                    opt.text = jsn[i].city_name;
+                    branch_city_id.options.add(opt);
+                }
+            }
+        };
+        ajax.open("get", "/ajaxcity?branch_state_id=" + branch_state_id.value, true);
+        ajax.send();
+    }
+</script>
+</body>
+
+</html>

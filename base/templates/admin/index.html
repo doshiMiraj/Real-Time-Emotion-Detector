@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Face Expression Detection</title>
+    <!--favicon-->
+    <link rel="icon" href="../../static/adminResources/image/favicon-32x32.png" type="image/png"/>
+    <!-- Vector CSS -->
+    <link href="../../static/adminResources/css/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
+    <!--plugins-->
+    <link href="../../static/adminResources/css/simplebar.css" rel="stylesheet"/>
+    <link href="../../static/adminResources/css/perfect-scrollbar.css" rel="stylesheet"/>
+    <link href="../../static/adminResources/css/metisMenu.min.css" rel="stylesheet"/>
+    <!-- loader-->
+    <link href="../../static/adminResources/css/pace.min.css" rel="stylesheet"/>
+    <script src="../../static/adminResources/js/pace.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../../static/adminResources/css/bootstrap.min.css"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Roboto&display=swap"/>
+    <!-- Icons CSS -->
+    <link rel="stylesheet" href="../../static/adminResources/css/icons.css"/>
+    <!-- App CSS -->
+    <link rel="stylesheet" href="../../static/adminResources/css/app.css"/>
+    <link rel="stylesheet" href="../../static/adminResources/css/dark-sidebar.css"/>
+    <link rel="stylesheet" href="../../static/adminResources/css/dark-theme.css"/>
+</head>
+
+<body>
+<!-- wrapper -->
+<div class="wrapper">
+
+    <!--sidebar-wrapper-->
+    {% include 'admin/menu.html' %}
+    <!--end sidebar-wrapper-->
+
+    <!--header-->
+    {% include 'admin/header.html' %}
+    <!--end header-->
+
+    <!--page-wrapper-->
+    <div class="page-wrapper">
+        <!--page-content-wrapper-->
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <img src="../../static/adminResources/image/detection.PNG" class="w-100 radius-10"
+                                     alt="project img">
+                            </div>
+                            <div class="col-6">
+                                <h2 class="card-title">Face Expression Detection</h2>
+                                <p class="text-muted" style="text-align: justify">
+                                    The purpose of the face expression detection project is to develop a system that can
+                                    accurately identify and interpret human facial expressions from visual input,
+                                    typically images or videos the face expression detection project aims to bridge the
+                                    gap between human emotional states and machine responses, creating more intuitive,
+                                    responsive, and empathetic systems across various fields.
+                                </p>
+                                <p class="text-muted" style="text-align: justify">
+                                    The objective of face expression detection through CCTV is to leverage facial
+                                    recognition and analysis technologies to monitor and interpret human emotions in
+                                    real-time within surveillance environments.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end page-content-wrapper-->
+    </div>
+    <!--end page-wrapper-->
+    <!--start overlay-->
+    <div class="overlay toggle-btn-mobile"></div>
+    <!--end overlay-->
+
+    <!--Start Back To Top Button-->
+    <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+    <!--End Back To Top Button-->
+
+    <!--footer -->
+    {% include 'admin/footer.html' %}
+    <!-- end footer -->
+
+</div>
+<!-- end wrapper -->
+<!-- JavaScript -->
+
+<!-- Bootstrap JS -->
+<script src="../../static/adminResources/js/bootstrap.bundle.min.js"></script>
+
+<!--plugins-->
+<script src="../../static/adminResources/js/jquery.min.js"></script>
+<script src="../../static/adminResources/js/simplebar.min.js"></script>
+<script src="../../static/adminResources/js/metisMenu.min.js"></script>
+<script src="../../static/adminResources/js/perfect-scrollbar.js"></script>
+<!-- Vector map JavaScript -->
+<script src="../../static/adminResources/js/jquery-jvectormap-2.0.2.min.js"></script>
+<script src="../../static/adminResources/js/jquery-jvectormap-world-mill-en.js"></script>
+<script src="../../static/adminResources/js/jquery-jvectormap-in-mill.js"></script>
+<script src="../../static/adminResources/js/jquery-jvectormap-us-aea-en.js"></script>
+<script src="../../static/adminResources/js/jquery-jvectormap-uk-mill-en.js"></script>
+<script src="../../static/adminResources/js/jquery-jvectormap-au-mill.js"></script>
+<script src="../../static/adminResources/js/apexcharts.min.js"></script>
+<script src="../../static/adminResources/js/index.js"></script>
+<!-- App JS -->
+<script src="../../static/adminResources/js/app.js"></script>
+<script>
+    new PerfectScrollbar('.dashboard-social-list');
+    new PerfectScrollbar('.dashboard-top-countries');
+</script>
+</body>
+
+</html>

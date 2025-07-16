@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Face Expression Detection</title>
+    <!--favicon-->
+    <link rel="icon" href="../../static/adminResources/image/favicon-32x32.png" type="image/png"/>
+    <!--plugins-->
+    <link href="../../static/adminResources/css/simplebar.css" rel="stylesheet"/>
+    <link href="../../static/adminResources/css/perfect-scrollbar.css" rel="stylesheet"/>
+    <link href="../../static/adminResources/css/metisMenu.min.css" rel="stylesheet"/>
+    <!-- loader-->
+    <link href="../../static/adminResources/css/pace.min.css" rel="stylesheet"/>
+    <script src="../../static/adminResources/js/pace.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../../static/adminResources/css/bootstrap.min.css"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Roboto&display=swap"/>
+    <!-- Icons CSS -->
+    <link rel="stylesheet" href="../../static/adminResources/css/icons.css"/>
+    <!-- App CSS -->
+    <link rel="stylesheet" href="../../static/adminResources/css/app.css"/>
+    <link rel="stylesheet" href="../../static/adminResources/css/dark-sidebar.css"/>
+    <link rel="stylesheet" href="../../static/adminResources/css/dark-theme.css"/>
+</head>
+
+<body>
+<!-- wrapper -->
+<div class="wrapper">
+
+    <!--sidebar-wrapper-->
+    {% include 'admin/menu.html' %}
+    <!--end sidebar-wrapper-->
+
+    <!--header-->
+    {% include 'admin/header.html' %}
+    <!--end header-->
+
+    <!--page-wrapper-->
+    <div class="page-wrapper">
+        <!--page-content-wrapper-->
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                <!--breadcrumb-->
+                <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+
+                </div>
+                <!--end breadcrumb-->
+                <div class="row">
+                    <div class="col-xl-12 mx-auto">
+                        <h6 class="mb-0 text-uppercase">Edit Camera Details</h6>
+                        <hr>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="p-4 border rounded">
+                                    <form class="row g-3 needs-validation" novalidate="" method="post"
+                                          action="/updatecamera">
+                                        {% for i in camera_vo_list %}
+                                            {################# Camera name #################}
+                                            <div class="col-md-12">
+                                                <label for="camera_name" class="form-label">
+                                                    Camera name
+                                                </label>
+                                                <input type="text" class="form-control" id="camera_name" name='camera_name' value="{{ i['camera_name'] }}">
+                                            </div>
+                                            {################# Camera model #################}
+                                            <div class="col-md-12">
+                                                <label for="camera_model" class="form-label">
+                                                    Camera model
+                                                </label>
+                                                <input type="text" class="form-control" id="camera_model" name='camera_model' value="{{ i['camera_model'] }}">
+                                            </div>
+                                            {################# Camera location #################}
+                                            <div class="col-md-12">
+                                                <label for="camera_location" class="form-label">
+                                                    Camera Location
+                                                </label>
+                                                <input type="text" class="form-control" id="camera_location" name='camera_location' value="{{ i['camera_location'] }}">
+                                            </div>
+                                            {################# Camera branch #################}
+                                            <div class="col-md-12">
+                                                <label for="camera_branch" class="form-label">
+                                                    Branch
+                                                </label>
+                                                <select class="form-select mb-3" id="camera_branch" name="camera_branch">
+                                                    <option>Select Branch</option>
+                                                    {% for i in branch_name %}
+                                                        <option value="{{ i['branch_id'] }}">{{ i['branch_name'] }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            {################# Camera field of vision#################}
+                                            <div class="col-md-12">
+                                                <label for="camera_field_of_visiom" class="form-label">
+                                                    Camera Field Of Vision
+                                                </label>
+                                                <input type="text" class="form-control" id="camera_field_of_visiom" name="camera_field_of_vision"  value="{{ i['camera_field_of_vision'] }}">
+                                            </div>
+                                            {################# Camera name #################}
+                                            <div class="col-md-12">
+                                                <label for="camera_resolution" class="form-label">
+                                                    Camera Resolution
+                                                </label>
+                                                <input type="text" class="form-control" id="camera_resolution" name="camera_resolution"  value="{{ i['camera_resolution'] }}">
+                                            </div>
+                                            {################# Camera recording mode  #################}
+                                            <div class="col-md-12">
+                                                <label for="camera_recording_mode" class="form-label">
+                                                    Camera Recording Mode
+                                                </label>
+                                                <input type="text" class="form-control" id="camera_recording_mode" name="camera_recording_mode" value="{{ i['camera_recording_mode'] }}">
+                                            </div>
+
+                                            <div class="col-12">
+                                                <button class="btn btn-primary" type="submit">Submit</button>
+                                            </div>
+                                            <input type="hidden" name="camera_id" id="camera_id" value="{{ i['camera_id'] }}">
+                                        {% endfor %}
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--end row-->
+            </div>
+        </div>
+        <!--end page-content-wrapper-->
+    </div>
+    <!--end page-wrapper-->
+
+    <!--start overlay-->
+    <div class="overlay toggle-btn-mobile"></div>
+    <!--end overlay-->
+
+    <!--Start Back To Top Button-->
+    <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+    <!--End Back To Top Button-->
+
+    <!--footer -->
+    {% include 'admin/footer.html' %}
+    <!-- end footer -->
+
+</div>
+<!-- end wrapper -->
+<!-- JavaScript -->
+<!-- Bootstrap JS -->
+<script src="../../static/adminResources/js/bootstrap.bundle.min.js"></script>
+
+<!--plugins-->
+<script src="../../static/adminResources/js/jquery.min.js"></script>
+<script src="../../static/adminResources/js/simplebar.min.js"></script>
+<script src="../../static/adminResources/js/metisMenu.min.js"></script>
+<script src="../../static/adminResources/js/perfect-scrollbar.js"></script>
+<!-- App JS -->
+<script src="../../static/adminResources/js/app.js"></script>
+</body>
+
+</html>
